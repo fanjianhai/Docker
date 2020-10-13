@@ -1,7 +1,7 @@
 ## 项目介绍
 
 <div style="text-align: center;">
-<img src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1589818293,2913011842&fm=26&gp=0.jpg"/>
+<img src="https://exp-picture.cdn.bcebos.com/7a3e980e7c75e5f49cfa96b9b1ceaad7736bbca7.jpg"/>
 </div>
 <br/>
 
