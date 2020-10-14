@@ -1,33 +1,84 @@
-> ÌØµã
+# Dockeré•œåƒ
 
-Docker½±Ïî¶¼ÊÇÖ»¶ÁµÄ£¬µ±ÈİÆ÷Æô¶¯Ê±£¬ Ò»¸öĞÂµÄ¿ÉĞ´²ã±»¼ÓÔØµ½¾µÏñµÄ¶¥²¿£¡
+## é•œåƒæ˜¯ä»€ä¹ˆ
 
-ÕâÒ»²ã¾ÍÊÇÎÒÃÇÍ¨³£ËµµÄÈİÆ÷²ã£¬ ÈİÆ÷Ö®ÏÂµÄ¶¼½Ğ×ö¾µÏñ²ã
-
-![ÔÚÕâÀï²åÈëÍ¼Æ¬ÃèÊö](https://img-blog.csdnimg.cn/2020081215123458.png)
+![åœ¨è¿™é‡Œæ’å…¥å›¾ç‰‡æè¿°](https://img-blog.csdnimg.cn/20201014171400685.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2ZhbmppYW5oYWk=,size_16,color_FFFFFF,t_70#pic_center)
 
 
 
-- commit¾µÏñ
+## Dockeré•œåƒåŠ è½½åŸç†
+
+![åœ¨è¿™é‡Œæ’å…¥å›¾ç‰‡æè¿°](https://img-blog.csdnimg.cn/20201014171900464.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2ZhbmppYW5oYWk=,size_16,color_FFFFFF,t_70#pic_center)
+
+![åœ¨è¿™é‡Œæ’å…¥å›¾ç‰‡æè¿°](https://img-blog.csdnimg.cn/2020101417230049.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2ZhbmppYW5oYWk=,size_16,color_FFFFFF,t_70#pic_center)
+
+
+
+
+
+## åˆ†å±‚ç†è§£
+
+> ç‰¹ç‚¹
+
+Dockeré•œåƒéƒ½æ˜¯åªè¯»çš„ï¼Œå½“å®¹å™¨å¯åŠ¨æ—¶ï¼Œ ä¸€ä¸ªæ–°çš„å¯å†™å±‚è¢«åŠ è½½åˆ°é•œåƒçš„é¡¶éƒ¨ï¼
+
+è¿™ä¸€å±‚å°±æ˜¯æˆ‘ä»¬é€šå¸¸è¯´çš„å®¹å™¨å±‚ï¼Œ å®¹å™¨ä¹‹ä¸‹çš„éƒ½å«åšé•œåƒå±‚
+
+![åœ¨è¿™é‡Œæ’å…¥å›¾ç‰‡æè¿°](https://img-blog.csdnimg.cn/2020081215123458.png)
+
+
+
+## commité•œåƒ
+
+```bash
+# 1. å¯åŠ¨ä¸€ä¸ªé»˜è®¤çš„tomcat
+
+[root@iZ2zeg4ytp0whqtmxbsqiiZ ~]# docker run -d --name tomcat007 -p 8888:8080 tomcat
+Unable to find image 'tomcat:latest' locally
+latest: Pulling from library/tomcat
+e4c3d3e4f7b0: Pull complete 
+101c41d0463b: Pull complete 
+8275efcd805f: Pull complete 
+751620502a7a: Pull complete 
+a59da3a7d0e7: Pull complete 
+9c0f1dffe039: Pull complete 
+c886bd27ecb8: Pull complete 
+30fb11aa7eaa: Pull complete 
+c9f12e463311: Pull complete 
+421d9a80377a: Pull complete 
+Digest: sha256:988a39f8a105f7578e0493e80ec0b63c084c493ad204143f6ae4996ce264cb92
+Status: Downloaded newer image for tomcat:latest
+e66df2fe60018a32c19994c940649e899cd0d604d86643e3df8ca8861af5e80f
+[root@iZ2zeg4ytp0whqtmxbsqiiZ ~]# docker ps
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS                    NAMES
+e66df2fe6001        tomcat              "catalina.sh run"   14 seconds ago      Up 12 seconds       0.0.0.0:8888->8080/tcp   tomcat007
+
+# 2. å‘ç°è¿™ä¸ªé»˜è®¤çš„tomcatæ˜¯æ²¡æœ‰webappsåº”ç”¨ï¼Œ é•œåƒçš„åŸå› ï¼Œå®˜æ–¹é•œåƒé»˜è®¤webappsä¸‹é¢æ˜¯æ²¡æœ‰å†…å®¹çš„
+# 3. æˆ‘è‡ªå·±æ‹·è´è¿›å»äº†åŸºæœ¬çš„æ–‡ä»¶
+
+[root@iZ2zeg4ytp0whqtmxbsqiiZ ~]# docker exec -it e66df2fe6001 /bin/bash
+root@e66df2fe6001:/usr/local/tomcat# ls
+BUILDING.txt	 LICENSE  README.md	 RUNNING.txt  conf  logs	    temp     webapps.dist
+CONTRIBUTING.md  NOTICE   RELEASE-NOTES  bin	      lib   native-jni-lib  webapps  work
+root@e66df2fe6001:/usr/local/tomcat# cp -r webapps.dist/* webapps
+root@e66df2fe6001:/usr/local/tomcat# 
+
+# 4. å°†æˆ‘ä»¬æ“ä½œè¿‡çš„å®¹å™¨é€šè¿‡commitæä»·ä¸ºä¸€ä¸ªé•œé•œåƒï¼æˆ‘ä»¬ä»¥åå°±ä½¿ç”¨æˆ‘ä»¬è‡ªå·±åˆ¶ä½œçš„é•œåƒäº†
+```
 
 ```shell
-docker commit Ìá½»ÈİÆ÷³ÉÎªÒ»¸öĞÂµÄ°æ±¾
+docker commit æäº¤å®¹å™¨æˆä¸ºä¸€ä¸ªæ–°çš„ç‰ˆæœ¬
 
-# ÃüÁîºÍgit Ô­ÀíÀàËÆ
-docker commit -m="Ìá½»µÄÃèÊöĞÅÏ¢" -a="×÷Õß" ÈİÆ÷id Ä¿±ê¾µÏñÃû£º[TAG]
+# å‘½ä»¤å’Œgit åŸç†ç±»ä¼¼
+docker commit -m="æäº¤çš„æè¿°ä¿¡æ¯" -a="ä½œè€…" å®¹å™¨id ç›®æ ‡é•œåƒåï¼š[TAG]
 
 docker commit -a="xiaofan" -m="add webapps app" d798a5946c1f tomcat007:1.0
 
 ```
 
-ÊµÕ½²âÊÔ
+![åœ¨è¿™é‡Œæ’å…¥å›¾ç‰‡æè¿°](https://img-blog.csdnimg.cn/20201014182400454.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2ZhbmppYW5oYWk=,size_16,color_FFFFFF,t_70#pic_center)
 
-```shell
-# 1. Æô¶¯Ò»¸öÄ¬ÈÏµÄtomcat
-# 2. ·¢ÏÖÕâ¸öÄ¬ÈÏµÄtomcatÊÇÃ»ÓĞwebappsÓ¦ÓÃ£¬ ¾µÏñµÄÔ­Òò£¬¹Ù·½¾µÏñÄ¬ÈÏwebappsÏÂÃæÊÇÃ»ÓĞÄÚÈİµÄ
-# 3. ÎÒ×Ô¼º¿½±´½øÈ¥ÁË»ù±¾µÄÎÄ¼ş
-# 4. ½«ÎÒÃÇ²Ù×÷¹ıµÄÈİÆ÷Í¨¹ıcommitÌá¼ÛÎªÒ»¸ö¾µ¾µÏñ£¡ÎÒÃÇÒÔºó¾ÍÊ¹ÓÃÎÒÃÇ×Ô¼ºÖÆ×÷µÄ¾µÏñÁË
-```
+
 
 
 
