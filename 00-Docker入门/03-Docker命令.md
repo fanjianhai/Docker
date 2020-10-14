@@ -1,6 +1,6 @@
-# 1. Docker的常用命令
+# 的常用命令
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20200812093539341.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2ZhbmppYW5oYWk=,size_16,color_FFFFFF,t_70)
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20200812093539341.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2ZhbmppYW5oYWk=,size_16,color_FFFFFF,t_70)	
 
 ## 帮助命令
 
@@ -139,12 +139,12 @@ docker run [可选参数] image
 
 
 # 测试，启动并进入容器
-[root@iZ2zeg4ytp0whqtmxbsqiiZ ~]# docker run -it centos /bin/bash
+[root@iZ2zeg4ytp0whqtmxbsqiiZ ~]# docker run --name  mycentos -it centos /bin/bash
 [root@74e82b7980e7 /]# ls	# 查看容器内的centos，基础版本，很多命令是不完善的
 bin  etc   lib	  lost+found  mnt  proc  run   srv  tmp  var
 dev  home  lib64  media       opt  root  sbin  sys  usr
 
-# 从容器中退回主机
+# 从容器中退回主机（容器不再运行）
 [root@77969f5dcbf9 /]# exit
 exit
 [root@iZ2zeg4ytp0whqtmxbsqiiZ /]# ls
@@ -485,6 +485,7 @@ docker attach 容器id
 
 # docker exec		# 进入容器后开启一个新的终端，可以在里面操作
 # docker attach		# 进入容器正在执行的终端，不会启动新的进程
+# docker run --name  mycentos -it centos /bin/bash     # 创建容器， 并且进入容器
 ```
 
 **从容器中拷贝文件到主机**
