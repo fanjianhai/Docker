@@ -1,27 +1,27 @@
-# 1.Docker²¿ÊğÈí¼şÊµÕ½
+# Dockeréƒ¨ç½²è½¯ä»¶å®æˆ˜
 
-## Docker°²×°Nginx
+## Dockerå®‰è£…Nginx
 
 ```shell
-# 1. ËÑË÷¾µÏñ search ½¨ÒéÈ¥docker hubËÑË÷£¬¿ÉÒÔ¿´µ½°ïÖúÎÄµµ
-# 2. ÏÂÔØ¾µÏñ pull
-# 3. ÔËĞĞ²âÊÔ
+# 1. æœç´¢é•œåƒ search å»ºè®®å»docker hubæœç´¢ï¼Œå¯ä»¥çœ‹åˆ°å¸®åŠ©æ–‡æ¡£
+# 2. ä¸‹è½½é•œåƒ pull
+# 3. è¿è¡Œæµ‹è¯•
 [root@iZ2zeg4ytp0whqtmxbsqiiZ home]# docker images
 REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
 centos              latest              0d120b6ccaa8        32 hours ago        215MB
 nginx               latest              08393e824c32        7 days ago          132MB
 
-# -d ºóÌ¨ÔËĞĞ
-# -name ¸øÈİÆ÷ÃüÃû
-# -p ËŞÖ÷»ú¶Ë¿Ú£ºÈİÆ÷ÄÚ²¿¶Ë¿Ú
-[root@iZ2zeg4ytp0whqtmxbsqiiZ home]# docker run -d --name nginx01 -p 3344:80 nginx	# ºóÌ¨·½Ê½Æô¶¯Æô¶¯¾µÏñ
+# -d åå°è¿è¡Œ
+# -name ç»™å®¹å™¨å‘½å
+# -p å®¿ä¸»æœºç«¯å£ï¼šå®¹å™¨å†…éƒ¨ç«¯å£
+[root@iZ2zeg4ytp0whqtmxbsqiiZ home]# docker run -d --name nginx01 -p 3344:80 nginx	# åå°æ–¹å¼å¯åŠ¨å¯åŠ¨é•œåƒ
 fe9dc33a83294b1b240b1ebb0db9cb16bda880737db2c8a5c0a512fc819850e0
 [root@iZ2zeg4ytp0whqtmxbsqiiZ home]# docker ps
 CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                  NAMES
-fe9dc33a8329        nginx               "/docker-entrypoint.¡­"   4 seconds ago       Up 4 seconds        0.0.0.0:3344->80/tcp   nginx01
-[root@iZ2zeg4ytp0whqtmxbsqiiZ home]# curl localhost:3344	# ±¾µØ·ÃÎÊ²âÊÔ
+fe9dc33a8329        nginx               "/docker-entrypoint.â€¦"   4 seconds ago       Up 4 seconds        0.0.0.0:3344->80/tcp   nginx01
+[root@iZ2zeg4ytp0whqtmxbsqiiZ home]# curl localhost:3344	# æœ¬åœ°è®¿é—®æµ‹è¯•
 
-# ½øÈëÈİÆ÷
+# è¿›å…¥å®¹å™¨
 [root@iZ2zeg4ytp0whqtmxbsqiiZ home]# docker exec -it nginx01 /bin/bash
 root@fe9dc33a8329:/# whereis nginx
 nginx: /usr/sbin/nginx /usr/lib/nginx /etc/nginx /usr/share/nginx
@@ -32,51 +32,51 @@ fastcgi_params	koi-win  modules     scgi_params  win-utf
 
 ```
 
-**¶Ë¿Ú±©Â¶¸ÅÄî**
+**ç«¯å£æš´éœ²æ¦‚å¿µ**
 
-![ÔÚÕâÀï²åÈëÍ¼Æ¬ÃèÊö](https://img-blog.csdnimg.cn/20200812111035666.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2ZhbmppYW5oYWk=,size_16,color_FFFFFF,t_70)
+![åœ¨è¿™é‡Œæ’å…¥å›¾ç‰‡æè¿°](https://img-blog.csdnimg.cn/20200812111035666.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2ZhbmppYW5oYWk=,size_16,color_FFFFFF,t_70)
 
 
 
-# 2. Docker°²×°Tomcat
+## Dockerå®‰è£…Tomcat
 
 ```shell
-# ¹Ù·½µÄÊ¹ÓÃ
+# å®˜æ–¹çš„ä½¿ç”¨
 docker run -it --rm tomcat:9.0
 
-# ÎÒÃÇÖ®Ç°µÄÆô¶¯¶¼ÊÇºóÌ¨µÄ£¬Í£Ö¹ÁËÈİÆ÷Ö®ºó£¬ ÈİÆ÷»¹ÊÇ¿ÉÒÔ²éµ½£¬docker run -it --rm Ò»°ãÓÃÀ´²âÊÔ£¬ÓÃÍê¾ÍÉ¾
+# æˆ‘ä»¬ä¹‹å‰çš„å¯åŠ¨éƒ½æ˜¯åå°çš„ï¼Œåœæ­¢äº†å®¹å™¨ä¹‹åï¼Œ å®¹å™¨è¿˜æ˜¯å¯ä»¥æŸ¥åˆ°ï¼Œdocker run -it --rm ä¸€èˆ¬ç”¨æ¥æµ‹è¯•ï¼Œç”¨å®Œå°±åˆ ï¼Œ é•œåƒè¿˜åœ¨ï¼Œå®¹å™¨åˆ äº†
 
-# ÏÂÔØÔÙÆô¶¯
+# ä¸‹è½½å†å¯åŠ¨
 docker pull tomcat
 
-# Æô¶¯ÔËĞĞ
+# å¯åŠ¨è¿è¡Œ
 docker run -d -p 3344:8080 --name tomcat01 tomcat
 
-# ²âÊÔ·ÃÎÊÃ»ÓĞÎÊÌâ
+# æµ‹è¯•è®¿é—®æ²¡æœ‰é—®é¢˜
 
-# ½øÈëÈİÆ÷
+# è¿›å…¥å®¹å™¨
 docker exec -it tomcat01 /bin/bash
 
-# ·¢ÏÖÎÊÌâ£º1.linuxÃüÁîÉÙÁË£¬ 2. webappsÏÂÄÚÈİÎª¿Õ£¬°¢ÀïÔÆ¾»ÎüÄÉ¹ıÄ¬ÈÏÊÇ×îĞ¡µÄ¾µÏñ£¬ËùÓĞ²»±ØÒªµÄ¶¼ÌŞ³ıÁË£¬±£Ö¤×îĞ¡¿ÉÔËĞĞ»·¾³¼´¿É
+# å‘ç°é—®é¢˜ï¼š1.linuxå‘½ä»¤å°‘äº†ï¼Œ 2. webappsä¸‹å†…å®¹ä¸ºç©ºï¼Œé˜¿é‡Œäº‘å‡€å¸çº³è¿‡é»˜è®¤æ˜¯æœ€å°çš„é•œåƒï¼Œæ‰€æœ‰ä¸å¿…è¦çš„éƒ½å‰”é™¤äº†ï¼Œä¿è¯æœ€å°å¯è¿è¡Œç¯å¢ƒå³å¯
 ```
 
-# 3. Docker²¿Êğes + kibana
+## Dockeréƒ¨ç½²es + kibana
 
 ```shell
-# es ±©Â¶µÄ¶Ë¿ÚºÜ¶à
-# es Ê®·ÖµÄºÄÄÚ´æ
-# es µÄÊı¾İÒ»°ãĞèÒª·ÅÖÃµ½°²È«Ä¿Â¼£¡ ¹ÒÔØ
-# --net somenetwork	ÍøÂçÅäÖÃ
+# es æš´éœ²çš„ç«¯å£å¾ˆå¤š
+# es ååˆ†çš„è€—å†…å­˜
+# es çš„æ•°æ®ä¸€èˆ¬éœ€è¦æ”¾ç½®åˆ°å®‰å…¨ç›®å½•ï¼ æŒ‚è½½
+# --net somenetwork	ç½‘ç»œé…ç½®
 
-# Æô¶¯elasticsearch
+# å¯åŠ¨elasticsearch
 docker run -d --name elasticsearch --net somenetwork -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node" elasticsearch:7.6.2
 
 [root@iZ2zeg4ytp0whqtmxbsqiiZ home]# docker run -d --name elasticsearch -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node" elasticsearch:7.6.2
 a920894a940b354d3c867079efada13d96cf9138712c76c8dea58fabd9c7e96f
 
-# Æô¶¯ÁËlinux¾Í¿¨Ö÷ÁË£¬docker stats ²é¿´cpu×´Ì¬
+# å¯åŠ¨äº†linuxå°±å¡ä¸»äº†ï¼Œdocker stats æŸ¥çœ‹cpuçŠ¶æ€
 
-# ²âÊÔÒ»ÏÂes³É¹¦ÁË
+# æµ‹è¯•ä¸€ä¸‹esæˆåŠŸäº†
 [root@iZ2zeg4ytp0whqtmxbsqiiZ home]# curl localhost:9200
 {
   "name" : "a920894a940b",
@@ -97,31 +97,31 @@ a920894a940b354d3c867079efada13d96cf9138712c76c8dea58fabd9c7e96f
 }
 
 
-# Ôö¼ÓÄÚ´æÏŞÖÆ£¬ĞŞ¸ÄÅäÖÃÎÄ¼ş -e »·¾³ÅäÖÃĞŞ¸Ä
+# å¢åŠ å†…å­˜é™åˆ¶ï¼Œä¿®æ”¹é…ç½®æ–‡ä»¶ -e ç¯å¢ƒé…ç½®ä¿®æ”¹
 docker run -d --name elasticsearch -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node" -e ES_JAVA_OPTS="-Xms64m -Xmx512m" elasticsearch:7.6.2
 ```
 
-## ¿ÉÊÓ»¯
+## å¯è§†åŒ–
 
-- portainer£¨ÏÈÓÃÕâ¸ö£©
+- portainerï¼ˆäº†è§£å³å¯ï¼‰
 
 ```shell
 docker run -d -p 8088:9000 --restart=always -v /var/run/docker.sock:/var/run/docker.sock --privileged=true portainer/portainer
 
-# ²âÊÔ
+# æµ‹è¯•
 [root@iZ2zeg4ytp0whqtmxbsqiiZ home]# curl localhost:8088
 <!DOCTYPE html
 ><html lang="en" ng-app="portainer">
 
-# ÍâÍø·ÃÎÊ http://ip:8088
+# å¤–ç½‘è®¿é—® http://ip:8088
 
 ```
 
-![ÔÚÕâÀï²åÈëÍ¼Æ¬ÃèÊö](https://img-blog.csdnimg.cn/20200812143512159.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2ZhbmppYW5oYWk=,size_16,color_FFFFFF,t_70)
+![åœ¨è¿™é‡Œæ’å…¥å›¾ç‰‡æè¿°](https://img-blog.csdnimg.cn/20200812143512159.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2ZhbmppYW5oYWk=,size_16,color_FFFFFF,t_70)
 
-- Rancher(CI/CDÔÙÓÃ)
+- Rancher(CI/CDå†ç”¨)
 
-
+https://www.cnblogs.com/wanghao1874/p/10609206.html
 
 
 

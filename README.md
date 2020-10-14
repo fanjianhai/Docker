@@ -19,7 +19,7 @@
 │      ├── 02-Docker安装
 │      ├── 03-Docker命令
 │      ├── 04-Docker部署软件实战
-│      ├── 05-Docker镜像
+│      ├── 05-Docker原理
 │      ├── 06-容器数据卷
 │      ├── 07-DockerFile
 │      ├── 08-Docker网络原理
