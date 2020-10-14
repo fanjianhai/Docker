@@ -18,11 +18,12 @@
 │      ├── 01-Docker概述
 │      ├── 02-Docker安装
 │      ├── 03-Docker命令
-│      ├── 04-Docker镜像
-│      ├── 05-容器数据卷
-│      ├── 06-DockerFile
-│      ├── 07-Docker网络原理
-│      ├── 08-Idea整合Docker
+│      ├── 04-Docker部署软件实战
+│      ├── 05-Docker镜像
+│      ├── 06-容器数据卷
+│      ├── 07-DockerFile
+│      ├── 08-Docker网络原理
+│      ├── 09-Idea整合Docker
 │   ├── 01-进阶
 │      ├── 01-Docker Compose
 │      ├── 02-Docker Swarm
