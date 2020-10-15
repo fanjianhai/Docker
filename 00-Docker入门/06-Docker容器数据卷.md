@@ -73,6 +73,7 @@ docker run -it -v 主机目录：容器目录
 # navicat链接到服务器的3344 --- 3344 和 容器的3306映射，这个时候我们就可以连接上mysql喽！
 
 # 在本地测试创建一个数据库，查看下我们的路径是否ok！
+# 以后我们在Linux上的修改会自动同步到容器中，反之亦然！
 ```
 
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20200812174632321.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2ZhbmppYW5oYWk=,size_16,color_FFFFFF,t_70#pic_center)

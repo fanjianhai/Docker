@@ -20,7 +20,7 @@
 │      ├── 03-Docker命令
 │      ├── 04-Docker部署软件实战
 │      ├── 05-Docker原理
-│      ├── 06-容器数据卷
+│      ├── 06-Docker容器数据卷
 │      ├── 07-DockerFile
 │      ├── 08-Docker网络原理
 │      ├── 09-Idea整合Docker
