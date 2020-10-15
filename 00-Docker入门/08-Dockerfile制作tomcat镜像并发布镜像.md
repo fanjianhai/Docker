@@ -42,7 +42,7 @@ CMD /usr/local/apache-tomcat-9.0.37/bin/startup.sh && tail -F /usr/local/apache-
 4. 启动镜像
 
 ```shell
-#  docker run -d -p 3344:8080 --name xiaofantomcat1 -v /home/xiaofan/build/tomcat/test:/usr/local/apache-tomcat-9.0.37/webapps/test -v /home/xiaofan/build/tomcat/tomcatlogs/:/usr/local/apache-tomcat-9.0.37/logs diytomcat
+#  docker run -d -p 3344:8080 --name xiaofantomcat1 -v /root/build/tomcat/test:/usr/local/apache-tomcat-9.0.37/webapps/test -v /root/build/tomcat/tomcatlogs:/usr/local/apache-tomcat-9.0.37/logs diytomcat
 ```
 
 5. 访问测试
@@ -135,13 +135,21 @@ docker tag diytomcat 1314520007/tomcat:1.0
 
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20200813190111625.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2ZhbmppYW5oYWk=,size_16,color_FFFFFF,t_70#pic_center)
 
-4. 创建容器镜像
+4. 设置访问凭证（Abc123123）
+
+![在这里插入图片描述](https://img-blog.csdnimg.cn/2020101517384089.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2ZhbmppYW5oYWk=,size_16,color_FFFFFF,t_70#pic_center)
+
+5. 创建容器镜像
 
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20200813190303741.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2ZhbmppYW5oYWk=,size_16,color_FFFFFF,t_70#pic_center)
 
-5. 点击仓库名称，参考官方文档即可
+6. 点击仓库名称，参考官方文档即可
 
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20200813191526549.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2ZhbmppYW5oYWk=,size_16,color_FFFFFF,t_70#pic_center)
+
+
+
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20201015181945345.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2ZhbmppYW5oYWk=,size_16,color_FFFFFF,t_70#pic_center)
 
 ## 总结
 

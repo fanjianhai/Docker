@@ -22,8 +22,9 @@
 │      ├── 05-Docker原理
 │      ├── 06-Docker容器数据卷
 │      ├── 07-DockerFile
-│      ├── 08-Docker网络原理
-│      ├── 09-Idea整合Docker
+│      ├── 08-Dockerfile制作tomcat镜像并发布镜像
+│      ├── 09-Docker网络原理
+│      ├── 10-Idea整合Docker
 │   ├── 01-进阶
 │      ├── 01-Docker Compose
 │      ├── 02-Docker Swarm
