@@ -65,7 +65,7 @@ PING 172.17.0.2 (172.17.0.2) 56(84) bytes of data.
 
 结论：tomcat01和tomcat02是共用的一个路由器，docker0
 
-所有容器不指定网络的情况下，都是docker0路由的，doucker会给我们的容器分配一个默认的可用IP
+所有容器不指定网络的情况下，都是docker0路由的，docker会给我们的容器分配一个默认的可用IP
 
 
 
@@ -81,7 +81,7 @@ Docker中的所有的网络接口都是虚拟的，虚拟的转发效率高！（内网传递文件！）
 
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20200814103808900.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2ZhbmppYW5oYWk=,size_16,color_FFFFFF,t_70#pic_center)
 
-## -- link
+## -- link（真正的开发中并不用这种方式）
 
 > 思考一个场景，我们编写了一个微服务，database url =ip； 项目不重启，数据ip换掉了，我们希望可以处理这个问题，可以按名字来进行访问容器
 
@@ -305,7 +305,7 @@ ping: tomcat-net-01: Name or service not known
 
 ```shell
 # 创建网卡
-docker network create redis --subnet 172.38.0.0/16
+docker network create --driver bridge --subnet 172.38.0.0/16 --gateway 172.38.0.1 redis
 
 # 通过脚本创建六个redis配置
 for port in $(seq 1 6); \
@@ -421,17 +421,18 @@ docker搭建redis集群完成！
 
 1. 构建springboot项目
 
-?	[IDEA2020 Ultimate版本激活方案](https://tech.souyunku.com/?p=11599) `亲测有效`
+2. [IDEA2020 Ultimate版本激活方案](https://tech.souyunku.com/?p=11599) `亲测有效`
 
-2. 打包应用
-3. 编写Dockerfile
+3. 打包应用
+
+4. 编写Dockerfile
 
 ```shell
 FROM java:8
 
 COPY *.jar /app.jar
 
-CMD ["--server.port=8080"]
+CMD ["--server.port=8080"]		# 参数列表格式：CMD ["参数1", "参数2"...]。在指定了 ENTRYPOINT 指令后，用 CMD 指定具体的参数。
 
 EXPOSE 8080
 
@@ -440,9 +441,9 @@ ENTRYPOINT ["java", "-jar", "/app.jar"]
 
 
 
-4. 构建镜像
+5. 构建镜像
 
-5. 发布运行！
+6. 发布运行！
 
 ```shell
 # 把打好的jar包和Dockerfile上传到linux
