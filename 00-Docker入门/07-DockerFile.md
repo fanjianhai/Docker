@@ -1,6 +1,6 @@
 ## 初始DockerFile
 
-DockerFile就是用来狗之间docker镜像的构建文件！命令脚本！先体验一下！
+DockerFile就是用来构建docker镜像的构建文件！命令脚本！先体验一下！
 
 通过这个脚本可以生成镜像，镜像是一层一层的，脚本一个个的命令，每个命令都是一层！
 
@@ -26,7 +26,7 @@ CMD /bin/bash
 
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20200813103117628.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2ZhbmppYW5oYWk=,size_16,color_FFFFFF,t_70#pic_center)
 
-这个卷和外部一定有一个同步的目录！
+这个卷的外部一定有一个同步的目录！
 
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20200813103318110.png#pic_center)
 
@@ -88,7 +88,7 @@ dockerFile是用来构建docker镜像的文件！命令参数脚本！
 
 `4. docker push 发布镜像（DockerHub、阿里云镜像）`
 
-查看婴喜爱官方是怎么做的？
+查看一下官方是怎么做的？
 
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20200813141504113.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2ZhbmppYW5oYWk=,size_16,color_FFFFFF,t_70#pic_center)
 
@@ -96,7 +96,7 @@ dockerFile是用来构建docker镜像的文件！命令参数脚本！
 
 很多官方镜像都像是基础包，很多功能都不具备，我们通常会自己搭建自己的镜像！
 
-官方既然可以制作镜像，能我们一样可以！
+官方既然可以制作镜像，我们一样可以！
 
 
 
@@ -166,7 +166,7 @@ CMD echo $MYPATH
 CMD echo "---end---"
 CMD /bin/bash
 
-# 2. 通过这个文件构建镜像
+# 2. 通过这个文件构建镜像， 注意后面有一个 .
 # 命令 docker build -f dockerfile文件路径 -t 镜像名:[tag] .
 
 [root@iZ2zeg4ytp0whqtmxbsqiiZ dockerfile]# docker build -f mydockerfile-centos -t mycentos:0.1 .
@@ -175,7 +175,7 @@ Successfully built d2d9f0ea8cb2
 Successfully tagged mycentos:0.1
 ```
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20200813152240210.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2ZhbmppYW5oYWk=,size_16,color_FFFFFF,t_70#pic_center)
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20200813152240210.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2ZhbmppYW5oYWk=,size_16,color_FFFFFF,t_70#pic_center)z
 
 我们可以列出本地进行的变更历史
 
