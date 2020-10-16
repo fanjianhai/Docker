@@ -92,7 +92,7 @@ chmod +x /usr/local/bin/docker-compose
 
 
 
-## 体验(没有测试通过)
+## 体验(测试通过)
 
 地址：https://docs.docker.com/compose/gettingstarted/
 
@@ -100,47 +100,70 @@ python应用。 计数器。redis！
 
 
 
-1. 应用app.py
+```bash
+# 1. 创建目录
+$ mkdir composetest
+$ cd composetest
 
-   
+# 2. 应用app.py
+import time
 
-2. Dockerfile 应用打包为镜像
+import redis
+from flask import Flask
 
-   ```shell
-   FROM python:3.6-alpine
-   ADD . /code
-   WORKDIR /code
-   RUN pip install -r requirements.txt
-   CMD ["python", "app.py"]
-   
-   # 官网的用来flask框架，我们这里不用它
-   # 这告诉Docker
-   # 从python3.7开始构建镜像
-   # 将当前目录添加到/code印像中的路径中
-   # 将工作目录设置为/code
-   # 安装Python依赖项
-   # 将容器的默认命令设置为python app.py
-   ```
+app = Flask(__name__)
+cache = redis.Redis(host='redis', port=6379)
 
-   
+def get_hit_count():
+    retries = 5
+    while True:
+        try:
+            return cache.incr('hits')
+        except redis.exceptions.ConnectionError as exc:
+            if retries == 0:
+                raise exc
+            retries -= 1
+            time.sleep(0.5)
 
-3. Docker-compose yaml文件（定义整个服务，需要的环境 web、redis） 完整的上线服务！
+@app.route('/')
+def hello():
+    count = get_hit_count()
+    return 'Hello World! I have been seen {} times.\n'.format(count)
+    
+# 3. requirements.txt
+flask
+redis
 
-   ```yaml
-   version: '3.8'
-   services:
-     web:
-       build: .
-       ports:
-         - "5000:5000"
-       volumes:
-         - .:/code
-     redis:
-       image: "redis:alpine"
-   
-   ```
+# 4. Dockerfile 应用打包为镜像
+FROM python:3.7-alpine
+WORKDIR /code
+ENV FLASK_APP=app.py
+ENV FLASK_RUN_HOST=0.0.0.0
+RUN apk add --no-cache gcc musl-dev linux-headers
+COPY requirements.txt requirements.txt
+RUN pip install -r requirements.txt
+EXPOSE 5000
+COPY . .
+CMD ["flask", "run"]
 
-4. 启动compose 项目 （docker-compose up）
+# 5. Docker-compose yaml文件（定义整个服务，需要的环境 web、redis） 完整的上线服务！
+version: '3.8'
+services:
+  web:
+    build: .
+    ports:
+      - "5000:5000"
+    volumes:
+      - .:/code
+  redis:
+    image: "redis:alpine"
+
+# 6. 启动compose 项目 （docker-compose up）
+
+# 7.测试
+```
+
+![在这里插入图片描述](https://img-blog.csdnimg.cn/2020101604241837.png#pic_center)
 
 流程：
 
