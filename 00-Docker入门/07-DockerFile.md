@@ -260,3 +260,19 @@ drwx------  2 root root 4096 Aug  9 21:40 lost+found
 ## 参考链接
 
 https://www.cnblogs.com/panwenbin-logs/p/8007348.html
+
+
+
+Dockerfile 一般分为四部分：
+
+- 基础镜像信息
+- 维护者信息
+- 镜像操作指令
+- 容器启动时执行指令
+- ’#’ 为 Dockerfile 中的注释。
+
+
+
+## CMD ENTRYPOINT 区别 终极解读！
+
+https://blog.csdn.net/u010900754/article/details/78526443

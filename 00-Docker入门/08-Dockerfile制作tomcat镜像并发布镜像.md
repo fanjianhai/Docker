@@ -42,7 +42,7 @@ CMD /usr/local/apache-tomcat-9.0.37/bin/startup.sh && tail -F /usr/local/apache-
 4. ∆Ù∂ØæµœÒ
 
 ```shell
-#  docker run -d -p 3344:8080 --name xiaofantomcat1 -v /root/build/tomcat/test:/usr/local/apache-tomcat-9.0.37/webapps/test -v /root/build/tomcat/tomcatlogs:/usr/local/apache-tomcat-9.0.37/logs diytomcat
+#  docker run -d -p 3344:8080 --name xiaofantomcat1 -v /root/my_tomcat/build/tomcat/test:/usr/local/apache-tomcat-9.0.37/webapps/test -v /root/my_tomcat/build/tomcat/tomcatlogs:/usr/local/apache-tomcat-9.0.37/logs diytomcat
 ```
 
 5. ∑√Œ ≤‚ ‘
